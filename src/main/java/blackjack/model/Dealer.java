@@ -8,11 +8,4 @@ public class Dealer extends Person{
         super("딜러");
     }
 
-    public boolean isUnder(){
-        return super.getScore() <= MIN_SCORE;
-    }
-
-    public void addBenefit(int money) {
-        super.benefit+=money;
-    }
 }

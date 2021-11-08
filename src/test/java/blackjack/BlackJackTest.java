@@ -1,6 +1,5 @@
 package blackjack;
 
-import blackjack.model.Card;
 import blackjack.model.CardNumberEnum;
 import blackjack.model.CardTypeEnum;
 import blackjack.model.Person;

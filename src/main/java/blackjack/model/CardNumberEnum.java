@@ -27,17 +27,20 @@ public enum CardNumberEnum {
         this.name = name;
     }
 
+    public static CardNumberEnum getEnum(int number) {
+        return Arrays.stream(values()).filter(numberEnum -> numberEnum.code == number)
+                .findFirst().orElseThrow(IllegalArgumentException::new);
+    }
+
     public int getScore() {
         return this.score;
     }
 
-    public static CardNumberEnum getEnum(int code) {
-        return Arrays.stream(values()).filter(numberEnum -> numberEnum.code == code)
-                .findFirst().orElseThrow(IllegalArgumentException::new);
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public String toString() {
-        return this.name;
+    public boolean isAce() {
+        return this == ACE;
     }
 }

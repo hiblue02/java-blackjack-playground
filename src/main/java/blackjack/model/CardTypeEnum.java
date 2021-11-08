@@ -16,13 +16,12 @@ public enum CardTypeEnum {
         this.name = name;
     }
 
-    public static CardTypeEnum getEnum(int code) {
-        return Arrays.stream(values()).filter(typeEnum -> typeEnum.code == code)
+    public static CardTypeEnum getEnum(int type) {
+        return Arrays.stream(values()).filter(typeEnum -> typeEnum.code == type)
                 .findFirst().orElseThrow(IllegalArgumentException::new);
     }
 
-    @Override
-    public String toString() {
-        return this.name;
+    public String getName() {
+        return name;
     }
 }
