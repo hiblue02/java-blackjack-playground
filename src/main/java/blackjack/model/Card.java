@@ -27,6 +27,6 @@ public class Card {
     }
 
     public int getScore() {
-        return this.number.getValue();
+        return this.number.getScore();
     }
 }

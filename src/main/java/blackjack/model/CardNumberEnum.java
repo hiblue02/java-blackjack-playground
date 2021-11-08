@@ -3,7 +3,7 @@ package blackjack.model;
 import java.util.Arrays;
 
 public enum CardNumberEnum {
-    ONE(1,1, "1"),
+    ACE(1,1, "1"),
     TWO(2,2,"2"),
     THREE(3,3,"3"),
     FOUR(4,4,"4"),
@@ -13,23 +13,22 @@ public enum CardNumberEnum {
     EIGHT(8,8,"8"),
     NINE(9,9, "9"),
     TEN(10,10,"10"),
-    ACE(11,11,"A"),
     KING(12,10,"K"),
     QUEEN(13,10,"Q"),
     JACK(14,10,"J");
 
     private final int code;
-    private final int value;
+    private final int score;
     private final String name;
 
-    CardNumberEnum(int code, int value, String name) {
+    CardNumberEnum(int code, int score, String name) {
         this.code = code;
-        this.value = value;
+        this.score = score;
         this.name = name;
     }
 
-    public int getValue() {
-        return value;
+    public int getScore() {
+        return this.score;
     }
 
     public static CardNumberEnum getEnum(int code) {
