@@ -8,4 +8,8 @@ public class Dealer extends Person{
         super("딜러");
     }
 
+    public boolean isLow(){
+        return cards.getSum() <= MIN_SCORE;
+    }
+
 }

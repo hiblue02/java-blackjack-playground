@@ -13,6 +13,7 @@ public abstract class Running extends Started {
 
     @Override
     public double profit(double profit) {
-        return 0;
+        return 1;
     }
+
 }

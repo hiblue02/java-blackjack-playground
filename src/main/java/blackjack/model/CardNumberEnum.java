@@ -43,4 +43,8 @@ public enum CardNumberEnum {
     public boolean isAce() {
         return this == ACE;
     }
+
+    public boolean isKQJ() {
+        return this == KING || this == JACK || this == QUEEN;
+    }
 }

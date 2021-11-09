@@ -22,4 +22,21 @@ public class Person {
     public String getName() {
         return this.name;
     }
+
+    public void draw(Card card){
+        this.cards.add(card);
+    }
+
+    public void draw(){
+        this.cards.add(new Card());
+    }
+
+    public void getStart(){
+        this.draw();
+        this.draw();
+    }
+
+    public boolean isBlackJack(){
+       return this.cards.isBlackjack();
+    }
 }

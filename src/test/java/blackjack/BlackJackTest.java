@@ -1,19 +1,16 @@
 package blackjack;
 
-import blackjack.model.CardNumberEnum;
-import blackjack.model.CardTypeEnum;
-import blackjack.model.Person;
+import blackjack.model.*;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class BlackJackTest {
 
     @Test
     void setCard_one_hart(){
-        Card card = new Card(CardNumberEnum.ONE, CardTypeEnum.HEART);
+        Card card = new Card(CardNumberEnum.ACE, CardTypeEnum.HEART);
         assertEquals("1하트",card.toString());
     }
     @Test
@@ -22,34 +19,40 @@ public class BlackJackTest {
         assertEquals("K스페이드",card.toString());
     }
     @Test
-    void getCardScore1(){
-        Person jason = new Person("jason");
-        jason.addCard(new Card(CardNumberEnum.SEVEN, CardTypeEnum.ClOVER));
-        jason.addCard(new Card(CardNumberEnum.KING, CardTypeEnum.SPADE));
-        assertEquals(17,jason.getScore());
-    }
-    @Test
-    void getCardScore2(){
-        Person jason = new Person("jason");
-        jason.addCard(new Card(CardNumberEnum.TWO, CardTypeEnum.HEART));
-        jason.addCard(new Card(CardNumberEnum.EIGHT, CardTypeEnum.SPADE));
-        jason.addCard(new Card(CardNumberEnum.ACE, CardTypeEnum.ClOVER));
-        assertEquals(21,jason.getScore());
-    }
-    @Test
-    void getCardReport(){
-        Person jason = new Person("jason");
-        jason.addCard(new Card(CardNumberEnum.SEVEN, CardTypeEnum.ClOVER));
-        jason.addCard(new Card(CardNumberEnum.KING, CardTypeEnum.SPADE));
-        assertEquals("jason카드: 7클로버, K스페이드 - 결과: 17",jason.getReport());
-    }
-    @Test
-    void isBlackJack(){
-        Person jason = new Person("jason");
-        jason.addCard(new Card(CardNumberEnum.TWO, CardTypeEnum.HEART));
-        jason.addCard(new Card(CardNumberEnum.EIGHT, CardTypeEnum.SPADE));
-        jason.addCard(new Card(CardNumberEnum.ACE, CardTypeEnum.ClOVER));
-        assertTrue(jason.isBlackJack());
+    void isBust(){
+        Cards cards = new Cards();
+        cards.add(new Card(CardNumberEnum.EIGHT, CardTypeEnum.ClOVER));
+        cards.add(new Card(CardNumberEnum.EIGHT, CardTypeEnum.SPADE));
+        cards.add(new Card(CardNumberEnum.EIGHT, CardTypeEnum.HEART));
+        assertTrue(cards.isBust());
     }
 
+    @Test
+    void isBlackjackTrue(){
+        Cards cards = new Cards();
+        cards.add(new Card(CardNumberEnum.EIGHT, CardTypeEnum.ClOVER));
+        cards.add(new Card(CardNumberEnum.EIGHT, CardTypeEnum.SPADE));
+        cards.add(new Card(CardNumberEnum.EIGHT, CardTypeEnum.HEART));
+        assertFalse(cards.isBlackjack());
+    }
+
+    @Test
+    void isBlackjackFalse(){
+        Cards cards = new Cards();
+        cards.add(new Card(CardNumberEnum.JACK, CardTypeEnum.ClOVER));
+        cards.add(new Card(CardNumberEnum.ACE, CardTypeEnum.HEART));
+        assertTrue(cards.isBlackjack());
+    }
+
+    @Test
+    void isBlackJack_getBetAmount(){
+
+        Player player = new Player("pobi");
+        player.setBetAmount(10000);
+        player.draw(new Card(CardNumberEnum.JACK, CardTypeEnum.ClOVER));
+        player.draw(new Card(CardNumberEnum.ACE, CardTypeEnum.ClOVER));
+
+
+
+    }
 }

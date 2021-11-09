@@ -32,4 +32,7 @@ public class Card {
         return this.number.getScore();
     }
 
+    public boolean isKQJ() {
+        return false;
+    }
 }
