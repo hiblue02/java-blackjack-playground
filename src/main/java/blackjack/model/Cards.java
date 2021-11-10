@@ -2,6 +2,7 @@ package blackjack.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cards {
 
@@ -20,15 +21,20 @@ public class Cards {
     }
 
     public boolean isBust() {
-        return getSum() > BLACK_JACK;
+        return getScore() > BLACK_JACK;
     }
 
-    public int getSum(){
+    public int getScore(){
         return cards.stream().mapToInt(Card::getScore).sum();
     }
 
     public boolean isBlackjack(){
         return cards.size() == 2
                 && cards.stream().allMatch(card -> card.isKQJ() || card.isAce());
+    }
+
+    @Override
+    public String toString() {
+        return cards.stream().map(Card::toString).collect(Collectors.joining(","));
     }
 }

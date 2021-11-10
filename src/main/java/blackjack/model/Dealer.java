@@ -9,7 +9,7 @@ public class Dealer extends Person{
     }
 
     public boolean isLow(){
-        return cards.getSum() <= MIN_SCORE;
+        return  this.getScore() <= MIN_SCORE;
     }
 
 }

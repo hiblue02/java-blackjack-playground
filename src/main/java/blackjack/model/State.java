@@ -2,10 +2,10 @@ package blackjack.model;
 
 public interface State {
 
-    public State draw(Card card);
-    public State stay();
-    public boolean isFinished();
-    public Cards getCards();
-    public double profit(double profit);
+    State draw(Card card);
+    State stay();
+    boolean isFinished();
+    Cards getCards();
+    double profit(double profit);
 
 }

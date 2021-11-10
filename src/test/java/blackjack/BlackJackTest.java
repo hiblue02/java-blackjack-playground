@@ -44,15 +44,5 @@ public class BlackJackTest {
         assertTrue(cards.isBlackjack());
     }
 
-    @Test
-    void isBlackJack_getBetAmount(){
 
-        Player player = new Player("pobi");
-        player.setBetAmount(10000);
-        player.draw(new Card(CardNumberEnum.JACK, CardTypeEnum.ClOVER));
-        player.draw(new Card(CardNumberEnum.ACE, CardTypeEnum.ClOVER));
-
-
-
-    }
 }
