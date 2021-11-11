@@ -6,6 +6,6 @@ public interface State {
     State stay();
     boolean isFinished();
     Cards getCards();
-    double profit(double profit);
+    double profit(double betMoney);
 
 }

@@ -29,7 +29,7 @@ public class InputView {
     }
 
     /** 배팅금액 입력받기 **/
-    public static Player getBetAmount(Player player){
+    public static void getBetAmount(Player player){
         while(true) {
             System.out.println(player.getName() + "의 배팅금액은?");
             String betMoney = scanner.nextLine();
@@ -37,7 +37,7 @@ public class InputView {
                 int betMoneyAmount = Integer.parseInt(betMoney);
                 if(betMoneyAmount > 0){
                     player.setBetMoney(Double.parseDouble(betMoney));
-                    return player;
+                    return;
                 }
             } catch (Exception e) {
                 System.out.println(ERROR_MESSAGE);

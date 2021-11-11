@@ -1,22 +1,19 @@
-package blackjack.controller;
+package blackjack;
 
-import blackjack.model.BlackJackGame;
+import blackjack.controller.BlackJackGame;
 import blackjack.model.Players;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
-public class BlackJackController {
+public class BlackJackGameMain {
 
 
     public static void main(String[] args) {
-        Players players = InputView.getPlayers();
-        BlackJackGame blackJackGame = new BlackJackGame(players);
+        BlackJackGame blackJackGame = new BlackJackGame(InputView.getPlayers());
         blackJackGame.betting();
         blackJackGame.setUpGame();
         OutputView.printMessageForSetup(blackJackGame);
-
         blackJackGame.playing();
-
         OutputView.printReport(blackJackGame);
         OutputView.printProfitReport(blackJackGame);
     }

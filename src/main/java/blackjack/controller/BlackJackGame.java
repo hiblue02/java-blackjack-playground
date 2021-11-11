@@ -1,5 +1,8 @@
-package blackjack.model;
+package blackjack.controller;
 
+import blackjack.model.Dealer;
+import blackjack.model.Player;
+import blackjack.model.Players;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
@@ -38,6 +41,7 @@ public class BlackJackGame {
             dealer.hit();
             OutputView.getDealerHitMessage();
         }
+        dealer.stay();
     }
     public String getPlayersName() {
         return players.getNames();
@@ -54,7 +58,7 @@ public class BlackJackGame {
             player.hit();
             OutputView.printMessageForHit(player);
         }
-        if(player.isFinished()){
+        if(!player.isFinished()){
             player.stay();
         }
     }

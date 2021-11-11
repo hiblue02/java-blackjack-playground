@@ -1,5 +1,7 @@
 package blackjack.model;
 
+import java.util.Random;
+
 public class Card {
 
     private static final int NUMBER_COUNT = 14;
@@ -16,7 +18,7 @@ public class Card {
     }
 
     public Card() {
-        this((int) (Math.random()*(NUMBER_COUNT-1)+1), (int) (Math.random()*(TYPE_COUNT-1)+1));
+        this(new Random().nextInt(NUMBER_COUNT)+1, new Random().nextInt(TYPE_COUNT)+1);
     }
 
     @Override
@@ -33,6 +35,6 @@ public class Card {
     }
 
     public boolean isKQJ() {
-        return false;
+        return this.number.isKQJ();
     }
 }
