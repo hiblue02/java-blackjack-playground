@@ -3,6 +3,8 @@ package blackjack.model;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
+import java.util.stream.Collectors;
+
 public class BlackJackGame {
 
     Players players;
@@ -42,16 +44,33 @@ public class BlackJackGame {
     }
 
     public String getCardList() {
-        return players.toString()+"\n"+dealer.toString();
+        return dealer.toString()+"\n"+
+                players.getPlayers().stream()
+                        .map(Player::toString).collect(Collectors.joining("\n"));
     }
 
-    public void personalHit(Player player){
-        while(player.isFinished() && InputView.isHit(player)){
+    private void personalHit(Player player){
+        while(!player.isFinished() && InputView.isHit(player)){
             player.hit();
             OutputView.printMessageForHit(player);
         }
         if(player.isFinished()){
             player.stay();
         }
+    }
+
+    public String getReport(){
+        return  dealer.toString()+"- 결과:"+dealer.getScore()+"\n"
+                +players.getPlayers().stream()
+                .map(player -> player.toString()+" - 결과:"+player.getScore())
+                .collect(Collectors.joining("\n"));
+    }
+
+    public String getProfitReport(){
+        return "## 최종수익\n"
+                +dealer.getName()+": "+dealer.profit()+"\n"
+                +players.getPlayers().stream()
+                .map(player -> player.getName()+": "+player.profit())
+                .collect(Collectors.joining("\n"));
     }
 }

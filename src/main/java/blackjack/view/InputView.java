@@ -29,16 +29,24 @@ public class InputView {
     }
 
     /** 배팅금액 입력받기 **/
-    public static int getBetAmount(Player player){
+    public static Player getBetAmount(Player player){
         while(true) {
             System.out.println(player.getName() + "의 배팅금액은?");
             String betMoney = scanner.nextLine();
             try {
-                return Integer.parseInt(betMoney);
+                int betMoneyAmount = Integer.parseInt(betMoney);
+                if(betMoneyAmount > 0){
+                    player.setBetMoney(Double.parseDouble(betMoney));
+                    return player;
+                }
             } catch (Exception e) {
                 System.out.println(ERROR_MESSAGE);
             }
         }
+
+
+
+
     }
 
     public static boolean isHit(Player player){

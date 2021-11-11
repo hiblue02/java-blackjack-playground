@@ -23,9 +23,12 @@ public class OutputView {
         System.out.println(player.toString());
     }
 
-    public static String printReport(BlackJackGame blackJackGame){
+    public static void printReport(BlackJackGame blackJackGame){
+        System.out.println(blackJackGame.getReport());
+    }
 
-        return "";
+    public static void printProfitReport(BlackJackGame blackJackGame){
+        System.out.println(blackJackGame.getProfitReport());
     }
 
 

@@ -10,4 +10,7 @@ public class BlackJack extends Finished {
     public double earningRate() {
         return 1.5;
     }
+
+
+
 }
