@@ -6,6 +6,8 @@ import blackjack.model.Players;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;
 
+import java.util.Arrays;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class BlackJackGame {
@@ -41,7 +43,9 @@ public class BlackJackGame {
             dealer.hit();
             OutputView.getDealerHitMessage();
         }
-        dealer.stay();
+        if(!dealer.isFinished()){
+            dealer.stay();
+        }
     }
     public String getPlayersName() {
         return players.getNames();
@@ -49,8 +53,7 @@ public class BlackJackGame {
 
     public String getCardList() {
         return dealer.toString()+"\n"+
-                players.getPlayers().stream()
-                        .map(Player::toString).collect(Collectors.joining("\n"));
+                players.getCardList();
     }
 
     private void personalHit(Player player){
@@ -63,18 +66,23 @@ public class BlackJackGame {
         }
     }
 
+    public void settleGameResult(){
+        if(dealer.isBust()){
+            players.setWinAll();
+        }
+        players.settleGameResult();
+        double dealerProfit = players.getPlayers().stream().mapToDouble(player->player.profit()*-1).sum();
+        dealer.setBetMoney(dealerProfit);
+    }
+
     public String getReport(){
-        return  dealer.toString()+"- 결과:"+dealer.getScore()+"\n"
-                +players.getPlayers().stream()
-                .map(player -> player.toString()+" - 결과:"+player.getScore())
-                .collect(Collectors.joining("\n"));
+        return  dealer.getReport()+"\n"
+                +players.getReport();
     }
 
     public String getProfitReport(){
         return "## 최종수익\n"
-                +dealer.getName()+": "+dealer.profit()+"\n"
-                +players.getPlayers().stream()
-                .map(player -> player.getName()+": "+player.profit())
-                .collect(Collectors.joining("\n"));
+                +dealer.getProfitReport()+"\n"
+                +players.getProfitReport();
     }
 }

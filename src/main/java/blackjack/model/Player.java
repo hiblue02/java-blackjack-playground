@@ -19,5 +19,20 @@ public class Player extends Person {
     }
 
 
+    public void winOrLoss(int min) {
+        int abs = abs();
+        if (abs == min) {
+            this.win();
+            return;
+        }
+       this.loss();
+    }
 
+    public void win() {
+        this.state = new Win(state.getCards());
+    }
+
+    public void loss(){
+        this.state = new Loss(state.getCards());
+    }
 }

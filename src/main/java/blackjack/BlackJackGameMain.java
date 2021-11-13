@@ -14,6 +14,7 @@ public class BlackJackGameMain {
         blackJackGame.setUpGame();
         OutputView.printMessageForSetup(blackJackGame);
         blackJackGame.playing();
+        blackJackGame.settleGameResult();
         OutputView.printReport(blackJackGame);
         OutputView.printProfitReport(blackJackGame);
     }

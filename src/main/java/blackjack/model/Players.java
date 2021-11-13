@@ -30,4 +30,26 @@ public class Players {
     public List<Player> getPlayers(){
         return this.players;
     }
+
+    public String getReport(){
+        return players.stream()
+                .map(Player::getReport)
+                .collect(Collectors.joining("\n"));
+    }
+
+    public String getProfitReport(){
+       return players.stream()
+                .map(Player::getProfitReport)
+                .collect(Collectors.joining("\n"));
+    }
+
+    public void settleGameResult(){
+        int min = players.stream().mapToInt(Player::abs).min().getAsInt();
+        players.forEach(player -> player.winOrLoss(min));
+    }
+
+    public void setWinAll(){
+        players.forEach(Player::win);
+    }
+
 }

@@ -44,5 +44,14 @@ public class BlackJackTest {
         assertTrue(cards.isBlackjack());
     }
 
+    @Test
+    void isFinished(){
+        Cards cards = new Cards();
+        cards.add(new Card(CardNumberEnum.JACK, CardTypeEnum.ClOVER));
+        cards.add(new Card(CardNumberEnum.ACE, CardTypeEnum.HEART));
+        State state = new Hit(cards);
+        state  = state.stay();
+        assertTrue(state.isFinished());
+    }
 
 }

@@ -1,9 +1,7 @@
 package blackjack.model;
 
-public class Stay extends Finished {
-
-
-    public Stay(Cards cards) {
+public class Win extends Finished{
+    public Win(Cards cards) {
         super(cards);
     }
 

@@ -7,5 +7,4 @@ public interface State {
     boolean isFinished();
     Cards getCards();
     double profit(double betMoney);
-
 }

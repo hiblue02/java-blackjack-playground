@@ -13,9 +13,9 @@ public enum CardNumberEnum {
     EIGHT(8,8,"8"),
     NINE(9,9, "9"),
     TEN(10,10,"10"),
-    KING(12,10,"K"),
-    QUEEN(13,10,"Q"),
-    JACK(14,10,"J");
+    KING(11,10,"K"),
+    QUEEN(12,10,"Q"),
+    JACK(13,10,"J");
 
     private final int code;
     private final int score;

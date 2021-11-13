@@ -30,7 +30,12 @@ public class Cards {
 
     public boolean isBlackjack(){
         return cards.size() == 2
-                && cards.stream().allMatch(card -> card.isKQJ() || card.isAce());
+                && cards.stream().filter(Card::isKQJ).findAny().isPresent()
+                && cards.stream().filter(Card::isAce).findAny().isPresent();
+    }
+
+    public int absFromBlackJack(){
+        return Math.abs(getScore()-BLACK_JACK);
     }
 
     @Override

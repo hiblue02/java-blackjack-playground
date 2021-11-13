@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Card {
 
-    private static final int NUMBER_COUNT = 14;
+    private static final int NUMBER_COUNT = 13;
     private static final int TYPE_COUNT = 4;
     private final CardNumberEnum number;
     private final CardTypeEnum type;

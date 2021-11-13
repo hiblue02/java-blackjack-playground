@@ -37,7 +37,7 @@ public class Person {
     }
 
     public void hit(){
-        this.state.draw(new Card());
+        this.state = this.state.draw(new Card());
     }
 
     public boolean isBlackJack() {
@@ -53,7 +53,7 @@ public class Person {
     }
 
     public void stay() {
-        this.state.stay();
+       this.state =  this.state.stay();
     }
 
     public double getScore(){
@@ -67,5 +67,17 @@ public class Person {
 
     public double profit(){
         return this.state.profit(this.betMoney);
+    }
+
+    public String getReport(){
+        return this +"- 결과:"+getScore();
+    }
+
+    public String getProfitReport(){
+        return this.name+": "+this.profit();
+    }
+
+    public int abs(){
+        return this.state.getCards().absFromBlackJack();
     }
 }

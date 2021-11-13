@@ -1,14 +1,13 @@
 package blackjack.model;
 
-public class Stay extends Finished {
+public class Loss extends Finished{
 
-
-    public Stay(Cards cards) {
+    public Loss(Cards cards) {
         super(cards);
     }
 
     @Override
     public double earningRate() {
-        return 1.0;
+        return -1.0;
     }
 }
